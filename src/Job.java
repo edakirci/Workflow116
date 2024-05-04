@@ -1,18 +1,18 @@
 public class Job {
-    private int jobID;
+    private int jobtypeID;
     private double jobSize;
 
-    public Job(int jobID, double jobSize) {
-        this.jobID = jobID;
+    public Job(int jobtypeID, double jobSize) {
+        this.jobtypeID = jobtypeID;
         this.jobSize = jobSize;
     }
 
-    public int getJobID() {
-        return jobID;
+    public int getJobtypeID() {
+        return jobtypeID;
     }
 
-    public void setJobID(int jobID) {
-        this.jobID = jobID;
+    public void setJobtypeID(int jobtypeID) {
+        this.jobtypeID = jobtypeID;
     }
 
     public double getJobSize() {
@@ -23,4 +23,3 @@ public class Job {
         this.jobSize = jobSize;
     }
 }
-
