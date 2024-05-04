@@ -6,5 +6,21 @@ public class Job {
         this.jobID = jobID;
         this.jobSize = jobSize;
     }
+
+    public int getJobID() {
+        return jobID;
+    }
+
+    public void setJobID(int jobID) {
+        this.jobID = jobID;
+    }
+
+    public double getJobSize() {
+        return jobSize;
+    }
+
+    public void setJobSize(double jobSize) {
+        this.jobSize = jobSize;
+    }
 }
 
