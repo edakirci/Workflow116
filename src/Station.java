@@ -1,3 +1,3 @@
-public class Station {
-    private int stationID;
+public class Station extends AbstractStation{
+
 }
