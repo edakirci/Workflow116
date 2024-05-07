@@ -24,7 +24,11 @@ public class JobType {
         this.tasks = tasks;
     }
 
-    public void addTask(TaskType task){
+    public void addTask(TaskType task) {
 
+    }
+
+    public <Task> Task getNextTask(int currentTaskIndex) {
+        return null;
     }
 }
