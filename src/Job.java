@@ -1,11 +1,6 @@
 public class Job {
 
 
-
-
-
-
-
         private String jobID;
         private JobType jobType;
         private int startTime;
