@@ -1,14 +1,14 @@
 import java.util.*;
 public abstract class AbstractStation {
-    private String taskType;
+    private String stationID;
     private int maxCapacity;
     private boolean multiflag;
     private boolean fifoflag;
     private List<TaskType> currentTasks;
     private PriorityQueue<TaskType> taskQueue;
 
-    public AbstractStation(String taskType, int maxCapacity, boolean multiflag, boolean fifoflag, List<TaskType> currentTasks, PriorityQueue<TaskType> taskQueue) {
-        this.taskType = taskType;
+    public AbstractStation(String stationID, int maxCapacity, boolean multiflag, boolean fifoflag, List<TaskType> currentTasks, PriorityQueue<TaskType> taskQueue) {
+        this.stationID = stationID;
         this.maxCapacity = maxCapacity;
         this.multiflag = multiflag;
         this.fifoflag = fifoflag;
@@ -16,12 +16,12 @@ public abstract class AbstractStation {
         this.taskQueue = taskQueue;
     }
 
-    public String getTaskType() {
-        return taskType;
+    public String getStationID() {
+        return stationID;
     }
 
-    public void setTaskType(String taskType) {
-        this.taskType = taskType;
+    public void setStationID(String stationID) {
+        this.stationID = stationID;
     }
 
     public int getMaxCapacity() {
