@@ -1,9 +1,9 @@
 import java.util.*;
 public class JobType {
     private String jobTypeID;
-    private List<TaskType> tasks;
+    private List<Task> tasks;
 
-    public JobType(String jobTypeID, List<TaskType> tasks) {
+    public JobType(String jobTypeID, List<Task> tasks) {
         this.jobTypeID = jobTypeID;
         this.tasks = tasks;
     }
@@ -16,15 +16,15 @@ public class JobType {
         this.jobTypeID = jobTypeID;
     }
 
-    public List<TaskType> getTasks() {
+    public List<Task> getTasks() {
         return tasks;
     }
 
-    public void setTasks(List<TaskType> tasks) {
+    public void setTasks(List<Task> tasks) {
         this.tasks = tasks;
     }
 
-    public void addTask(TaskType task) {
+    public void addTask(Task task) {
 
     }
 

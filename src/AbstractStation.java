@@ -4,11 +4,16 @@ public abstract class AbstractStation {
     private int maxCapacity;
     private boolean multiflag;
     private boolean fifoflag;
-    private List<TaskType> currentTasks;
-    private PriorityQueue<TaskType> taskQueue;
+    private List<Task> currentTasks;
+    private PriorityQueue<Task> taskQueue;
 
+<<<<<<< HEAD
+    public AbstractStation(String taskType, int maxCapacity, boolean multiflag, boolean fifoflag, List<Task> currentTasks, PriorityQueue<Task> taskQueue) {
+        this.taskType = taskType;
+=======
     public AbstractStation(String stationID, int maxCapacity, boolean multiflag, boolean fifoflag, List<TaskType> currentTasks, PriorityQueue<TaskType> taskQueue) {
         this.stationID = stationID;
+>>>>>>> 21ae6736f4d461efc00105dc755e87007e747f41
         this.maxCapacity = maxCapacity;
         this.multiflag = multiflag;
         this.fifoflag = fifoflag;
@@ -48,19 +53,19 @@ public abstract class AbstractStation {
         this.fifoflag = fifoflag;
     }
 
-    public List<TaskType> getCurrentTasks() {
+    public List<Task> getCurrentTasks() {
         return currentTasks;
     }
 
-    public void setCurrentTasks(List<TaskType> currentTasks) {
+    public void setCurrentTasks(List<Task> currentTasks) {
         this.currentTasks = currentTasks;
     }
 
-    public PriorityQueue<TaskType> getTaskQueue() {
+    public PriorityQueue<Task> getTaskQueue() {
         return taskQueue;
     }
 
-    public void setTaskQueue(PriorityQueue<TaskType> taskQueue) {
+    public void setTaskQueue(PriorityQueue<Task> taskQueue) {
         this.taskQueue = taskQueue;
     }
 
