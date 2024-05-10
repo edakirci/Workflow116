@@ -8,6 +8,8 @@ public class Task extends AbstractTask{
         this.size = size;
     }
 
+
+
     public String getTaskType() {
         return taskType;
     }
