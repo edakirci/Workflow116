@@ -2,9 +2,10 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.HashMap;
 
 
-public class FileParser {
+public class FileParser{
     private String filePath;
 
     class InvalidTaskTypeException extends Exception {
@@ -29,7 +30,9 @@ public class FileParser {
     }
 
     public FileParser(String filePath) {
+
         this.filePath = filePath;
+
     }
 
     public String getFilePath() {
@@ -41,14 +44,13 @@ public class FileParser {
     }
 
     public void parseFile() throws InvalidTaskTypeException, DuplicateIDException, MissingElementException, IOException {
-        try {
-            List<String> lines = Files.readAllLines(Paths.get(filePath));
-        } catch (IOException e) {
-            System.out.println("Error Parsing File: " + e.getMessage());
-        }
+        List<String> lines = Files.readAllLines(Paths.get(filePath));
+        parseLines(lines);
     }
 
     private void parseLines(List<String> lines) throws InvalidTaskTypeException, DuplicateIDException, MissingElementException {
+        Map<String,Task> taskTypes = new HashMap<>();
+        Map<String,JobType> jobTypes = new HashMap<>();
         for (int i = 0; i < lines.size(); i++) {
             try {
                 parseLine(lines.get(i), i + 1);

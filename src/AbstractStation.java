@@ -7,13 +7,10 @@ public abstract class AbstractStation {
     private List<Task> currentTasks;
     private PriorityQueue<Task> taskQueue;
 
-<<<<<<< HEAD
-    public AbstractStation(String taskType, int maxCapacity, boolean multiflag, boolean fifoflag, List<Task> currentTasks, PriorityQueue<Task> taskQueue) {
-        this.taskType = taskType;
-=======
-    public AbstractStation(String stationID, int maxCapacity, boolean multiflag, boolean fifoflag, List<TaskType> currentTasks, PriorityQueue<TaskType> taskQueue) {
+
+    public AbstractStation(String stationID, int maxCapacity, boolean multiflag, boolean fifoflag, List<Task> currentTasks, PriorityQueue<Task> taskQueue) {
         this.stationID = stationID;
->>>>>>> 21ae6736f4d461efc00105dc755e87007e747f41
+
         this.maxCapacity = maxCapacity;
         this.multiflag = multiflag;
         this.fifoflag = fifoflag;
