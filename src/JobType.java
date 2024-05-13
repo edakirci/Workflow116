@@ -3,7 +3,7 @@ public class JobType {
     private String jobTypeID;
     private List<Task> tasks;
 
-    public JobType(String jobTypeID) {
+    public JobType(String jobTypeID, List<Task> tasks) {
         this.jobTypeID = jobTypeID;
         this.tasks = tasks;
     }
@@ -24,6 +24,7 @@ public class JobType {
         this.tasks = tasks;
     }
 
+
     public void addTask(Task task) {
 
     }
@@ -32,4 +33,3 @@ public class JobType {
         return null;
     }
 }
-

@@ -1,28 +1,33 @@
-public class Task extends AbstractTask{
-    private String taskType;
-    private int size;
-    public Task(String taskTypeID, double defaultSize) {
-        super(taskTypeID, defaultSize);
-        this.taskType = taskType;
+public class Task extends AbstractTask {
+    private boolean isCompleted;
+
+    public Task(String taskType, int size, Job job) {
+        super(taskType, size, job);
+        this.isCompleted = false;
     }
 
 
 
-
-    public String getTaskType() {
-        return taskType;
+    public void execute() {
+        System.out.println("Task " + getTaskType() + " is starting.");
+        performTaskExecution();  // Simulate the task execution details.
+        completeTask();  // Mark the task as completed after execution.
     }
 
-    public void setTaskType(String taskType) {
-        this.taskType = taskType;
+    private void performTaskExecution() {
+        // Placeholder for the execution logic.
+        // This could involve interacting with other system components like resources or stations.
+        System.out.println("Executing task: " + getTaskType() + " with size " + getSize());
     }
 
-    public int getSize() {
-        return size;
+    private void completeTask() {
+        isCompleted = true;
+        System.out.println("Task " + getTaskType() + " has completed.");
+        getJob().notifyTaskCompletion(this);
     }
 
-    public void setSize(int size) {
-        this.size = size;
+    public boolean isCompleted() {
+        return isCompleted;
     }
 }
 

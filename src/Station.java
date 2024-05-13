@@ -1,11 +1,11 @@
-import java.util.List;
-import java.util.PriorityQueue;
-public class Station extends AbstractStation{
+public class Station extends AbstractStation {
     private double speed;
-    public Station(String taskType, int maxCapacity, boolean multiflag, boolean fifoflag, List<Task> currentTasks, PriorityQueue<Task> taskQueue) {
-        super(taskType, maxCapacity, multiflag, fifoflag, currentTasks, taskQueue);
+
+    public Station(String stationID, int maxCapacity, boolean multiflag, boolean fifoflag, double speed) {
+        super(stationID, maxCapacity, multiflag, fifoflag);
         this.speed = speed;
     }
+
     public double getSpeed() {
         return speed;
     }
@@ -16,13 +16,13 @@ public class Station extends AbstractStation{
 
     @Override
     public void addTask(Task task) {
-        if(getCurrentTasks().size() < getMaxCapacity()){
-            if(isMultiflag()){
-                System.out.println("Cannot add different task types concurrently.");
-                return;
-            }
-            getCurrentTasks().add(task);
-        }
+        super.addTask(task);
+        System.out.println("Task " + task.getTaskType() + " added to Station " + getStationID() + " with speed " + speed);
+    }
+
+    @Override
+    public void taskCompleted(Task task) {
+        super.taskCompleted(task);
+        System.out.println("Task " + task.getTaskType() + " completed at Station " + getStationID());
     }
 }
-
