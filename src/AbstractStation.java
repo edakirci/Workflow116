@@ -69,4 +69,7 @@ public abstract class AbstractStation {
     public void scheduleTasks(){
 
     }
+    public void addTask(Task task){
+
+    }
 }
