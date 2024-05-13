@@ -33,21 +33,6 @@ public class Station extends AbstractStation{
 
 
 
-    /*
 
-    public void addTask(){
-    if(tasksize(+ start time??) < maxCapacity)
-    ...
-    }
-
-    public void processTask(){
-
-        //System.out.println("Executing task " + task.getTaskType() + " at station " + getStationID() + " will take " + speed + " minutes.");
-    }
-
-    public void fifoFlag(){}
-    public void multiFlag(){ if(...) = Y ... else break;}
-
-     */
 
 
