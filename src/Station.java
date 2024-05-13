@@ -10,22 +10,19 @@ public class Station extends AbstractStation{
         return speed;
     }
 
-
-    /*
-
-    public void addTask(){
-    if(tasksize(+ start time??) < maxCapacity)
-    ...
+    public void setSpeed(double speed) {
+        this.speed = speed;
     }
 
-    public void processTask(){
-
-        //System.out.println("Executing task " + task.getTaskType() + " at station " + getStationID() + " will take " + speed + " minutes.");
+    @Override
+    public void addTask(Task task) {
+        if(getCurrentTasks().size() < getMaxCapacity()){
+            if(isMultiflag()){
+                System.out.println("Cannot add different task types concurrently.");
+                return;
+            }
+            getCurrentTasks().add(task);
+        }
     }
-
-    public void fifoFlag(){}
-    public void multiFlag(){ if(...) = Y ... else break;}
-
-     */
-
 }
+

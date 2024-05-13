@@ -66,5 +66,15 @@ public abstract class AbstractStation {
         this.taskQueue = taskQueue;
     }
 
-    //public void scheduleTasks(){}
+    public void scheduleTasks(){
+
+    }
+    public void addTask(Task task){
+
+    }
 }
+
+
+
+
+
