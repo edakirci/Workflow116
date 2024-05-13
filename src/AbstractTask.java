@@ -1,5 +1,4 @@
-public abstract class
-AbstractTask {
+public abstract class AbstractTask {
     private String taskTypeID;
     private double defaultSize;
 
