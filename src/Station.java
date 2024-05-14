@@ -19,7 +19,21 @@ public class Station extends AbstractStation {
         super.addTask(task);
         System.out.println("Task " + task.getTaskType() + " added to Station " + getStationID() + " with speed " + speed);
     }
+    public boolean canExecuteTask(Task task) {
+        // Check if the station's capacity allows adding new tasks
+        if (getCurrentTasks().size() >= getMaxCapacity()) {
+            System.out.println("Station " + getStationID() + " is at full capacity.");
+            return false;
+        }
 
+        // Check if the station can handle the task type based on the multiflag setting
+        if (!getMultiflag() && !getCurrentTasks().isEmpty() && !getCurrentTasks().get(0).getTaskType().equals(task.getTaskType())) {
+            System.out.println("Station " + getStationID() + " does not support multiple task types concurrently.");
+            return false;
+        }
+
+        return true;
+    }
     @Override
     public void taskCompleted(Task task) {
         super.taskCompleted(task);

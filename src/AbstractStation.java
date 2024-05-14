@@ -40,8 +40,9 @@ public abstract class AbstractStation {
     public void setMultiflag(boolean multiflag) {
         this.multiflag = multiflag;
     }
+    public boolean getMultiflag() {return multiflag;}
 
-    public boolean isFifoflag() {
+    public boolean getFifoflag() {
         return fifoflag;
     }
 
@@ -117,4 +118,10 @@ public abstract class AbstractStation {
         }
     }
 }
+
+
+
+
+
+
 

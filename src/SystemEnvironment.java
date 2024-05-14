@@ -10,7 +10,7 @@ public class SystemEnvironment {
 
     public static Station findSuitableStation(Task task) {
         for (Station station : stations) {
-            if (station.canExecuteTask(task)) { //TODO fix the error
+            if (station.canExecuteTask(task)) {
                 return station;
             }
         }
