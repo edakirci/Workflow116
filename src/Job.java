@@ -9,7 +9,6 @@ public class Job {
     private Queue<Task> tasks;
     private boolean isComplete;
     private int currentTime;
-    private int currentTaskIndex;
 
     public Job(String jobID, JobType jobType, int startTime, int duration) {
         this.jobID = jobID;
@@ -43,7 +42,6 @@ public class Job {
     }
 
 
-    // Method to start the job execution
     public void startJob() {
         if (!tasks.isEmpty() && currentTime >= startTime) {
             executeNextTask();
@@ -52,28 +50,41 @@ public class Job {
         }
     }
 
-    // Method to execute the next task in the queue
     public void executeNextTask() {
         if (!tasks.isEmpty()) {
             Task currentTask = tasks.poll();
-            System.out.println("Executing task: " + currentTask.getTaskType() + " for Job ID: " + jobID);
-            currentTime += currentTask.getDuration(this); // Increment current time by the task's duration
+            Station station = SystemEnvironment.findSuitableStation(currentTask);
+            if (station != null) {
+                station.addTask(currentTask);
+            } else {
+                System.out.println("No suitable station found for task " + currentTask.getTaskType());
+            }
+        } else {
             checkJobCompletion();
         }
     }
 
-    // Method to check if the job is completed
+    public void notifyTaskCompletion(Task task) {
+        System.out.println("Task completed: " + task.getTaskType());
+        executeNextTask();
+        if (tasks.isEmpty()) {
+            isComplete = true;
+            System.out.println("Job " + jobID + " completed.");
+        }
+    }
+
     private void checkJobCompletion() {
         if (tasks.isEmpty()) {
             isComplete = true;
-            int deadline = startTime + duration;
-            if (currentTime <= deadline) {
-                System.out.println("Job " + jobID + " completed on time at " + currentTime);
-            } else {
-                System.out.println("Job " + jobID + " completed late at " + currentTime);
-            }
+            System.out.println("Job " + jobID + " completed.");
         }
     }
+    public Station findSuitableStation(Task task) {
+        // This method would interact with the system environment to find a suitable station.
+        // Placeholder for demonstration.
+        return SystemEnvironment.findStationForTask(task);
+    }
+
 
 
     // This method calculates the remaining duration to the deadline

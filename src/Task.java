@@ -6,23 +6,20 @@ public class Task extends AbstractTask {
         this.isCompleted = false;
     }
 
-
-
-    public void execute() {
-        System.out.println("Task " + getTaskType() + " is starting.");
-        performTaskExecution();  // Simulate the task execution details.
-        completeTask();  // Mark the task as completed after execution.
+    public void execute(Station station) {
+        System.out.println("Task " + getTaskType() + " is starting at Station " + station.getStationID());
+        performTaskExecution();
+        completeTask(station);
     }
 
     private void performTaskExecution() {
-        // Placeholder for the execution logic.
-        // This could involve interacting with other system components like resources or stations.
         System.out.println("Executing task: " + getTaskType() + " with size " + getSize());
     }
 
-    private void completeTask() {
+    private void completeTask(Station station) {
         isCompleted = true;
-        System.out.println("Task " + getTaskType() + " has completed.");
+        System.out.println("Task " + getTaskType() + " has completed at Station " + station.getStationID());
+        station.taskCompleted(this);
         getJob().notifyTaskCompletion(this);
     }
 
@@ -30,4 +27,3 @@ public class Task extends AbstractTask {
         return isCompleted;
     }
 }
-
