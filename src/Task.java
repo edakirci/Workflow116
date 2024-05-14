@@ -1,28 +1,29 @@
-public class Task extends AbstractTask{
-    private String taskType;
-    private int size;
-    public Task(String taskTypeID, double defaultSize) {
-        super(taskTypeID, defaultSize);
-        this.taskType = taskType;
+public class Task extends AbstractTask {
+    private boolean isCompleted;
+
+    public Task(String taskType, int size, Job job) {
+        super(taskType, size, job);
+        this.isCompleted = false;
     }
 
-
-
-
-    public String getTaskType() {
-        return taskType;
+    public void execute(Station station) {
+        System.out.println("Task " + getTaskType() + " is starting at Station " + station.getStationID());
+        performTaskExecution();
+        completeTask(station);
     }
 
-    public void setTaskType(String taskType) {
-        this.taskType = taskType;
+    private void performTaskExecution() {
+        System.out.println("Executing task: " + getTaskType() + " with size " + getSize());
     }
 
-    public int getSize() {
-        return size;
+    private void completeTask(Station station) {
+        isCompleted = true;
+        System.out.println("Task " + getTaskType() + " has completed at Station " + station.getStationID());
+        station.taskCompleted(this);
+        getJob().notifyTaskCompletion(this);
     }
 
-    public void setSize(int size) {
-        this.size = size;
+    public boolean isCompleted() {
+        return isCompleted;
     }
 }
-

@@ -1,25 +1,35 @@
 public abstract class AbstractTask {
-    private String taskTypeID;
-    private double defaultSize;
+    private String taskType;
+    private int size;
+    private Job job;
 
-    public AbstractTask(String taskTypeID, double defaultSize) {
-        this.taskTypeID = taskTypeID;
-        this.defaultSize = defaultSize;
+    public AbstractTask(String taskType, int size, Job job) {
+        this.taskType = taskType;
+        this.size = size;
+        this.job = job;
     }
 
-    public String getTaskTypeID() {
-        return taskTypeID;
+    public String getTaskType() {
+        return taskType;
     }
 
-    public void setTaskTypeID(String taskTypeID) {
-        this.taskTypeID = taskTypeID;
+    public void setTaskType(String taskType) {
+        this.taskType = taskType;
     }
 
-    public double getDefaultSize() {
-        return defaultSize;
+    public int getSize() {
+        return size;
     }
 
-    public void setDefaultSize(double defaultSize) {
-        this.defaultSize = defaultSize;
+    public void setSize(int size) {
+        this.size = size;
+    }
+
+    public Job getJob() {
+        return job;
+    }
+
+    public void setJob(Job job) {
+        this.job = job;
     }
 }
