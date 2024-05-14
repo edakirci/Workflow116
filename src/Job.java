@@ -9,13 +9,14 @@ public class Job {
     private Queue<Task> tasks;
     private boolean isComplete;
     private int currentTime;
+    private int currentTaskIndex;
 
     public Job(String jobID, JobType jobType, int startTime, int duration) {
         this.jobID = jobID;
         this.jobType = jobType;
         this.startTime = startTime;
         this.duration = duration;
-        this.tasks = new LinkedList<>(JobType.getTasks()); // Assume JobType.getTasks() returns a list of tasks
+        this.tasks = new LinkedList<>(); // Assume JobType.getTasks() returns a list of tasks
         this.isComplete = false;
         this.currentTime = 0; // Simulation start time for this job
     }
@@ -79,10 +80,10 @@ public class Job {
             System.out.println("Job " + jobID + " completed.");
         }
     }
-    public Station findSuitableStation(Task task) {
+    public Station findStationForTaskStation(Task task) {
         // This method would interact with the system environment to find a suitable station.
         // Placeholder for demonstration.
-        return SystemEnvironment.findStationForTask(task);
+        return SystemEnvironment.findSuitableStation(task);
     }
 
 
