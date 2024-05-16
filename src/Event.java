@@ -1,39 +1,29 @@
 public class Event {
-    private int time;
-    private String type;
-    private String details;
+    public enum EventType {
+        JOB_START,
+        TASK_COMPLETE
+    }
 
-    public Event(int time, String type, String details) {
-        this.time = time;
+    private EventType type;
+    private double time;
+    private Object details; // This could be a Job or Task object
+
+    public Event(EventType type, double time, Object details) {
         this.type = type;
+        this.time = time;
         this.details = details;
     }
 
-    public int getTime() {
-        return time;
-    }
-
-    public void setTime(int time) {
-        this.time = time;
-    }
-
-    public String getType() {
+    public EventType getType() {
         return type;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public double getTime() {
+        return time;
     }
 
-    public String getDetails() {
+    public Object getDetails() {
         return details;
     }
-
-    public void setDetails(String details) {
-        this.details = details;
-    }
-
-    public void executeEvent(){
-
-    }
 }
+
