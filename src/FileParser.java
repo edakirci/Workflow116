@@ -75,7 +75,7 @@ public class FileParser {
                 taskTypes.put(taskTypeId, new Task(taskTypeId, size));
 
             }
-
+        System.out.println(taskTypes.get("T_1").getDefaultSize());
 
     }
     class InvalidTaskTypeException extends Exception {
