@@ -26,6 +26,7 @@ public class Job {
         return jobID;
     }
 
+
     public int getStartTime() {
         return startTime;
     }
@@ -56,7 +57,7 @@ public class Job {
             Task currentTask = tasks.poll();
             Station station = SystemEnvironment.findSuitableStation(currentTask);
             if (station != null) {
-                station.addTask(currentTask);
+                station.addTask(currentTask, station);
             } else {
                 System.out.println("No suitable station found for task " + currentTask.getTaskType());
             }
@@ -126,4 +127,7 @@ public class Job {
     public boolean isComplete() {
         return isComplete;
     }
-}
+
+
+    }
+

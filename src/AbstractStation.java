@@ -68,11 +68,11 @@ public abstract class AbstractStation {
 
 
 
-    public void addTask(Task task) {
+    public void addTask(Task task, Station station) {
         if (multiflag || currentTasks.stream().allMatch(t -> t.getTaskType().equals(task.getTaskType()))) {
             if (currentTasks.size() < maxCapacity) {
                 currentTasks.add(task);
-                task.execute(); // Simulate task execution immediately for demonstration
+                task.execute(station); // Simulate task execution immediately for demonstration
             } else {
                 taskQueue.add(task);
             }
@@ -83,11 +83,11 @@ public abstract class AbstractStation {
         updateStationStatus();
     }
 
-    public void taskCompleted(Task task) {
+    public void taskCompleted(Task task, Station station) {
         currentTasks.remove(task);
         if (!taskQueue.isEmpty()) {
             Task nextTask = taskQueue.poll();
-            addTask(nextTask);
+            addTask(nextTask, station);
         } else {
             updateStationStatus();
         }

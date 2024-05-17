@@ -15,8 +15,8 @@ public class Station extends AbstractStation {
     }
 
     @Override
-    public void addTask(Task task) {
-        super.addTask(task);
+    public void addTask(Task task,Station station) {
+        super.addTask(task, station);
         System.out.println("Task " + task.getTaskType() + " added to Station " + getStationID() + " with speed " + speed);
     }
     public boolean canExecuteTask(Task task) {
@@ -35,8 +35,8 @@ public class Station extends AbstractStation {
         return true;
     }
     @Override
-    public void taskCompleted(Task task) {
-        super.taskCompleted(task);
+    public void taskCompleted(Task task, Station station) {
+        super.taskCompleted(task, station);
         System.out.println("Task " + task.getTaskType() + " completed at Station " + getStationID());
     }
 }
