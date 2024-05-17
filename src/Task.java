@@ -3,13 +3,15 @@ public class Task {
     private String taskType;
     private double defaultSize;
     private Job job;
+    private double duration;
 
     public Task(String taskType, double defaultSize) {
         this.isCompleted = isCompleted;
         this.taskType = taskType;
         this.defaultSize = defaultSize;
-        this.isCompleted=false;
+        this.isCompleted = false;
     }
+
 
     public void setCompleted(boolean completed) {
         isCompleted = completed;
@@ -37,6 +39,14 @@ public class Task {
 
     public void setJob(Job job) {
         this.job = job;
+    }
+
+    public double getDuration() {
+        return duration;
+    }
+
+    public void setDuration(double duration) {
+        this.duration = duration;
     }
 
     public void execute(Station station) {
