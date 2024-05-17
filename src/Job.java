@@ -26,6 +26,7 @@ public class Job {
         return jobID;
     }
 
+
     public int getStartTime() {
         return startTime;
     }
@@ -126,4 +127,7 @@ public class Job {
     public boolean isComplete() {
         return isComplete;
     }
-}
+
+
+    }
+
