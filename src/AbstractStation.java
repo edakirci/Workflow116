@@ -69,7 +69,15 @@ public abstract class AbstractStation {
 
 
     public void addTask(Task task, Station station) {
-        if (multiflag || currentTasks.stream().allMatch(t -> t.getTaskType().equals(task.getTaskType()))) {
+        boolean allMatch = true;
+        for (Task t : currentTasks) {
+            if (!t.getTaskType().equals(task.getTaskType())) {
+                allMatch = false;
+                break;
+            }
+        }
+
+        if (multiflag || allMatch) {
             if (currentTasks.size() < maxCapacity) {
                 currentTasks.add(task);
                 task.execute(station); // Simulate task execution immediately for demonstration
@@ -118,10 +126,3 @@ public abstract class AbstractStation {
         }
     }
 }
-
-
-
-
-
-
-
