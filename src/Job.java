@@ -81,12 +81,12 @@ public class Job {
             System.out.println("Job " + jobID + " completed.");
         }
     }
+
     public Station findStationForTaskStation(Task task) {
         // This method would interact with the system environment to find a suitable station.
         // Placeholder for demonstration.
         return SystemEnvironment.findSuitableStation(task);
     }
-
 
 
     // This method calculates the remaining duration to the deadline
@@ -127,7 +127,4 @@ public class Job {
     public boolean isComplete() {
         return isComplete;
     }
-
-
-    }
-
+}

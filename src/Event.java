@@ -26,4 +26,3 @@ public class Event {
         return details;
     }
 }
-
