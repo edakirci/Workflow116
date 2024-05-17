@@ -2,9 +2,9 @@ public abstract class AbstractTask {
     private String taskTypeID;
     private double defaultSize;
 
-    public AbstractTask(String taskTypeID, double defaultSize) {
-        this.taskTypeID = taskTypeID;
+    public AbstractTask(String taskTypeID,double defaultSize) {
         this.defaultSize = defaultSize;
+        this.taskTypeID = taskTypeID;
     }
 
     public String getTaskTypeID() {

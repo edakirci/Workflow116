@@ -1,8 +1,8 @@
-public class Task extends AbstractTask{
+public class Task{
     private String taskType;
-    private int size;
-    public Task(String taskTypeID, double defaultSize) {
-        super(taskTypeID, defaultSize);
+    private double defaultsize;
+    public Task(String taskType, double defaultSize) {
+        this.defaultsize = defaultSize;
         this.taskType = taskType;
     }
 
@@ -17,12 +17,12 @@ public class Task extends AbstractTask{
         this.taskType = taskType;
     }
 
-    public int getSize() {
-        return size;
+    public double getDefaultSize() {
+        return defaultsize;
     }
 
-    public void setSize(int size) {
-        this.size = size;
+    public void setDefaultSize(double defaultsize) {
+        this.defaultsize = defaultsize;
     }
 }
 
