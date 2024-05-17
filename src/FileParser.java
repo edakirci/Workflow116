@@ -75,13 +75,6 @@ public class FileParser {
                 taskTypes.put(taskTypeId, new Task(taskTypeId, size));
 
             }
-            System.out.println(taskTypes.get("T1").getDefaultSize());
-            System.out.println(taskTypes.get("T2").getDefaultSize());
-            System.out.println(taskTypes.get("T3").getDefaultSize());
-            System.out.println(taskTypes.get("T4").getDefaultSize());
-            System.out.println(taskTypes.get("T5").getDefaultSize());
-            System.out.println(taskTypes.get("T_1").getDefaultSize());
-            System.out.println(taskTypes.get("T21)").getDefaultSize());
 
 
     }
