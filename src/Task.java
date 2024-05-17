@@ -52,7 +52,7 @@ public class Task {
     private void completeTask(Station station) {
         isCompleted = true;
         System.out.println("Task " + getTaskType() + " has completed at Station " + station.getStationID());
-        station.taskCompleted(this);
+        station.taskCompleted(this, station);
         getJob().notifyTaskCompletion(this);
     }
 

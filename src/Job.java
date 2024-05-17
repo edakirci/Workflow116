@@ -56,7 +56,7 @@ public class Job {
             Task currentTask = tasks.poll();
             Station station = SystemEnvironment.findSuitableStation(currentTask);
             if (station != null) {
-                station.addTask(currentTask);
+                station.addTask(currentTask, station);
             } else {
                 System.out.println("No suitable station found for task " + currentTask.getTaskType());
             }
