@@ -72,7 +72,30 @@ public class FileParser {
 
 
     }
-    public void parseJobTypes(){
+    public void parseJobTypes(String line, Map<String, JobType> jobTypes, List<Task> tasks) {
+        String[] parts = line.split("\s");
+        String jobTypeId = parts[0].substring(1);
+        for (int i = 1; i < parts.length; i++) {
+            if(parts[i].contains("T")) {
+                if(i == parts.length -1){
+                    jobTypeId = parts[0];
+                    Task task = new Task(parts[i], 1);
+                    tasks.add(task);
+                    jobTypes.put(jobTypeId, new JobType(jobTypeId, tasks));
+                    break;
+                }else if (!parts[i + 1].startsWith("T")) {
+                    Task task = new Task(parts[i], Double.parseDouble(parts[i + 1]));
+                    tasks.add(task);
+                }else if(parts[i + 1].startsWith("T")){
+                    Task task = new Task(parts[i], 1);
+                    tasks.add((task));
+                }
+                jobTypes.put(jobTypeId, new JobType(jobTypeId, tasks));
+                System.out.println(jobTypes.get("J2").getTasks().get(0).getDefaultSize());
+
+            }
+        }
+    }
 
     }
 
