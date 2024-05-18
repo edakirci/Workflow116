@@ -96,7 +96,6 @@ public class FileParser {
             }
         }
     }
-
     }
 
     class InvalidTaskTypeException extends Exception {
@@ -117,4 +116,3 @@ public class FileParser {
             return message;
         }
     }
-}
