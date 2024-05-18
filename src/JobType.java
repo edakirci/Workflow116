@@ -3,7 +3,7 @@ public class JobType {
     private String jobTypeID;
     private List<Task> tasks;
 
-    public JobType(String jobTypeID, List<Task> tasks) {
+    public JobType(String jobTypeID,List<Task> tasks) {
         this.jobTypeID = jobTypeID;
         this.tasks = tasks;
     }
