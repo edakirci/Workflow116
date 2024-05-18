@@ -1,23 +1,29 @@
-public class Station extends AbstractStation {
-    private double speed;
+import java.util.HashMap;
+import java.util.Map;
 
-    public Station(String stationID, int maxCapacity, boolean multiflag, boolean fifoflag, double speed) {
+public class Station extends AbstractStation {
+    private double stationSpeed;
+    public Map<String,Double> taskSpeeds;
+    public Map<String,Station> stationTypes;
+
+    public Station(String stationID, int maxCapacity, boolean multiflag, boolean fifoflag, double stationSpeed) {
         super(stationID, maxCapacity, multiflag, fifoflag);
-        this.speed = speed;
+        this.taskSpeeds = taskSpeeds;
+        this.stationSpeed = stationSpeed;
     }
 
     public double getSpeed() {
-        return speed;
+        return stationSpeed;
     }
 
     public void setSpeed(double speed) {
-        this.speed = speed;
+        this.stationSpeed = speed;
     }
 
     @Override
     public void addTask(Task task,Station station) {
         super.addTask(task, station);
-        System.out.println("Task " + task.getTaskType() + " added to Station " + getStationID() + " with speed " + speed);
+        System.out.println("Task " + task.getTaskType() + " added to Station " + getStationID() + " with speed " + stationSpeed);
     }
     public boolean canExecuteTask(Task task) {
         // Check if the station's capacity allows adding new tasks

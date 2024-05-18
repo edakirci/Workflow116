@@ -6,7 +6,7 @@ public abstract class AbstractStation {
     private boolean multiflag;
     private boolean fifoflag;
     private List<Task> currentTasks;
-    private PriorityQueue<Task> taskQueue;
+    private PriorityQueue<Task> taskQueue;//DEĞİŞECEK!.
 
     public AbstractStation(String stationID, int maxCapacity, boolean multiflag, boolean fifoflag) {
         this.stationID = stationID;
@@ -69,15 +69,7 @@ public abstract class AbstractStation {
 
 
     public void addTask(Task task, Station station) {
-        boolean allMatch = true;
-        for (Task t : currentTasks) {
-            if (!t.getTaskType().equals(task.getTaskType())) {
-                allMatch = false;
-                break;
-            }
-        }
-
-        if (multiflag || allMatch) {
+        if (multiflag || currentTasks.stream().allMatch(t -> t.getTaskType().equals(task.getTaskType()))) {
             if (currentTasks.size() < maxCapacity) {
                 currentTasks.add(task);
                 task.execute(station); // Simulate task execution immediately for demonstration
@@ -126,3 +118,10 @@ public abstract class AbstractStation {
         }
     }
 }
+
+
+
+
+
+
+
