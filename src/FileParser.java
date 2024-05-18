@@ -101,12 +101,6 @@ public class FileParser {
         }
     }
 
-    }
-
-    class InvalidTaskTypeException extends Exception {
-        public InvalidTaskTypeException(String s) {
-
-
     public void parseStations(String line, Map<String, Station> stationTypes) {
         double stationSpeed = 1.0;
         line.substring(0,line.length() - 1);
@@ -139,26 +133,25 @@ public class FileParser {
                 i += 2;
             }
             System.out.println("222222");
-
         }
         System.out.println(stationTypes.get("S1").getMaxCapacity());
     }
-        class InvalidTaskTypeException extends Exception {
-            public InvalidTaskTypeException(String s) {
-            }
-
-            public String InvalidTaskTypeException(String message) {
-                return message;
-            }
+    class InvalidTaskTypeException extends Exception {
+        public InvalidTaskTypeException(String s) {
         }
 
-        class MissingElementException extends Exception {
-            public MissingElementException(String s) {
-
-            }
-
-            public String MissingElementException(String message) {
-                return message;
-            }
+        public String InvalidTaskTypeException(String message) {
+            return message;
         }
     }
+
+    class MissingElementException extends Exception {
+        public MissingElementException(String s) {
+
+        }
+
+        public String MissingElementException(String message) {
+            return message;
+        }
+    }
+}
