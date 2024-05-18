@@ -101,6 +101,12 @@ public class FileParser {
         }
     }
 
+    }
+
+    class InvalidTaskTypeException extends Exception {
+        public InvalidTaskTypeException(String s) {
+
+
     public void parseStations(String line, Map<String, Station> stationTypes) {
         double stationSpeed = 1.0;
         line.substring(0,line.length() - 1);
@@ -133,6 +139,7 @@ public class FileParser {
                 i += 2;
             }
             System.out.println("222222");
+
         }
         System.out.println(stationTypes.get("S1").getMaxCapacity());
     }
@@ -155,5 +162,3 @@ public class FileParser {
             }
         }
     }
-
-
