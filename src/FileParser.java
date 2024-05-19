@@ -107,7 +107,7 @@ public class FileParser {
                 jobListText.put(jobID,job);
 
             }else{
-                System.out.println("Invalid line format: " + line);
+                System.err.println("Invalid line format: " + line);
             }
         }
 
@@ -181,7 +181,6 @@ public class FileParser {
         String[] parts = line.split("\\s+");
         String jobTypeId = parts[0].substring(1);
         tasks.clear();
-
         for (int i = 1; i < parts.length; i++) {
             double size = 1;
 
@@ -198,6 +197,8 @@ public class FileParser {
                 i++; // Skip the next part as it is the size for this task
             } else {
                 size = taskTypes.get(parts[i]).getDefaultSize();
+            }if (size < 1) {
+                System.err.println("Size must be > 0");
             }
 
             Task task = new Task(taskTypeID, size);

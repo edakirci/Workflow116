@@ -25,21 +25,29 @@ public class Test {
                 jobList.add(job);
                 startTimes.add(jobParser.jobListText.get(entry.getKey()).getStartTime());
                 Collections.sort(startTimes);
-
             }
             for (int i = 0; i < startTimes.size(); i++) {
+                boolean jobStarted = false;
                 for (int j = 0; j < jobList.size(); j++) {
                     if (startTimes.get(i) == jobList.get(j).getStartTime()) {
                         jobList.get(j).startJob();
-                        Task tasks = jobParser.getTasks().get(i);
-                        Station station = new Station("S1", 4, true, false, 2);
-                        for (int k = 0; k < jobParser.getTasks().size(); k++) {
-                            tasks.execute(station);
-                            tasks.performTaskExecution();
-                            tasks.completeTask(station);
-                        }
+                        jobStarted = true;
+                        // Ensure 'i' is within the bounds of 'jobParser.getTasks()'
+                        if (i < jobParser.getTasks().size()) {
+                            Task task = jobParser.getTasks().get(i);
+                            Station station = new Station("S1", 4, true, false, 2);
 
+                            for (int k = 0; k < jobParser.getTasks().size(); k++) {
+                                task.execute(station);
+                                break;
+                            }
+                        } else {
+                            System.out.println("Task not found");
+                        }
                     }
+                }
+                if (!jobStarted) {
+                    System.out.println("No job found with start time: " + startTimes.get(i));
                 }
             }
 
@@ -49,11 +57,4 @@ public class Test {
         }
     }
 
-    public static void sortArray(ArrayList<Integer> intarray) {
-
-    }
-
-    public static void workflowSimulator() {
-
-    }
 }
