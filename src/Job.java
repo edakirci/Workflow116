@@ -1,10 +1,21 @@
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class Job {
+
     private String jobID;
     private JobType jobType;
     private int startTime;
+
+    public JobType getJobType() {
+        return jobType;
+    }
+
+    public void setJobType(JobType jobType) {
+        this.jobType = jobType;
+    }
+
     private int duration;
     private Queue<Task> tasks;
     private boolean isComplete;
@@ -18,6 +29,7 @@ public class Job {
         this.tasks = new LinkedList<>(); // Assume JobType.getTasks() returns a list of tasks
         this.isComplete = false;
         this.currentTime = 0; // Simulation start time for this job
+        this.jobType = jobType;
     }
 
     // Getters and Setters
@@ -43,11 +55,25 @@ public class Job {
     }
 
 
-    public void startJob() {
+    public void startJob() throws IOException {
         if (!tasks.isEmpty() && currentTime >= startTime) {
             executeNextTask();
         } else {
-            System.out.println("Job " + jobID + ")"+ " is scheduled to start at " + startTime);
+            System.out.println("Job " + jobID + " is scheduled to start at " + startTime);
+        }
+        findStation();
+
+
+
+    }
+    public void findStation() throws IOException {
+        String filepath = "src/input.txt";
+        FileParser fileParser = new FileParser(filepath,"src/Job.txt");
+        Task currentTask = tasks.poll();
+        for (int i = 0; i < fileParser.stationTypes.size(); i++) {
+            if(fileParser.stationTypes.get(i).taskSpeeds.containsKey(currentTask)){
+                System.out.println("Task is proccessing at Station: " + fileParser.stationTypes.get(i).getStationID());
+            }
         }
     }
 

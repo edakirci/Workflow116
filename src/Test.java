@@ -1,7 +1,9 @@
 import java.io.*;
 import java.util.*;
+import java.util.Collection;
 
-public class Test {
+public class Test{
+
     public static void main(String[] args) throws IOException {
         Scanner sc = new Scanner(System.in);
         System.out.println("Please enter your text file path");
@@ -14,16 +16,36 @@ public class Test {
             jobParser.parseFiles();
             jobParser.parseJobFile();
             System.out.println("Parsing completed successfully for job data.");
-            for (Map.Entry<String, JobType> entry : jobParser.getJobTypes().entrySet()) {
-                System.out.println("Job ID: " + entry.getKey() + " has type: " + jobParser.getJobListText());
+            List<Job> jobList = new ArrayList<>();
+            List<Integer> startTimes = new ArrayList<>();
+            List<Task> completedTasks = new ArrayList<>();
+            for (Map.Entry<String, Job> entry : jobParser.getJobListText().entrySet()) {
+                System.out.println("Job ID: " + entry.getKey());
+                Job job = new Job(entry.getKey(),jobParser.jobListText.get(entry.getKey()).getJobType(),jobParser.jobListText.get(entry.getKey()).getStartTime(),jobParser.jobListText.get(entry.getKey()).getDuration());
+                jobList.add(job);
+                startTimes.add(jobParser.jobListText.get(entry.getKey()).getStartTime());
+                Collections.sort(startTimes);
 
             }
+            for (int i = 0; i < startTimes.size(); i++) {
+                for (int j = 0; j < jobList.size(); j++) {
+                    if(startTimes.get(i) == jobList.get(j).getStartTime()){
+                        jobList.get(j).startJob();
+
+                    }
+                }
+            }
+
+
+
         } catch (IOException e) {
             System.err.println("Error reading files: " + e.getMessage());
         }
     }
+    public static void sortArray(ArrayList<Integer> intarray){
 
-        public static void workflowSimulator () {
-
-        }
     }
+    public static void workflowSimulator () {
+
+    }
+}
