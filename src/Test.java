@@ -50,15 +50,10 @@ public class Test {
                     System.out.println("No job found with start time: " + startTimes.get(i));
                 }
             }
-
-
+        } catch (FileNotFoundException e) {
+            System.err.println("Error: File not found: " + e.getMessage());
         } catch (IOException e) {
             System.err.println("Error reading files: " + e.getMessage());
         }
     }
-
-
 }
-
-}
-
