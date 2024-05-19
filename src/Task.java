@@ -63,7 +63,6 @@ public class Task {
         isCompleted = true;
         System.out.println("Task " + getTaskType() + " has completed at Station " + station.getStationID());
         station.taskCompleted(this, station);
-        getJob().notifyTaskCompletion(this);
     }
 
     public boolean isCompleted() {
