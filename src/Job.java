@@ -11,9 +11,8 @@ public class Job {
     private int currentTime;
     private int currentTaskIndex;
 
-    public Job(String jobID, JobType jobType, int startTime, int duration) {
+    public Job(String jobID,JobType jobType, int startTime, int duration) {
         this.jobID = jobID;
-        this.jobType = jobType;
         this.startTime = startTime;
         this.duration = duration;
         this.tasks = new LinkedList<>(); // Assume JobType.getTasks() returns a list of tasks
@@ -48,7 +47,7 @@ public class Job {
         if (!tasks.isEmpty() && currentTime >= startTime) {
             executeNextTask();
         } else {
-            System.out.println("Job " + jobID + " is scheduled to start at " + startTime);
+            System.out.println("Job " + jobID + ")"+ " is scheduled to start at " + startTime);
         }
     }
 
@@ -61,8 +60,6 @@ public class Job {
             } else {
                 System.out.println("No suitable station found for task " + currentTask.getTaskType());
             }
-        } else {
-            checkJobCompletion();
         }
     }
 
@@ -71,14 +68,14 @@ public class Job {
         executeNextTask();
         if (tasks.isEmpty()) {
             isComplete = true;
-            System.out.println("Job " + jobID + " completed.");
+            System.out.println("Job " + jobID +")"+ " completed.");
         }
     }
 
-    private void checkJobCompletion() {
+    public void checkJobCompletion() {
         if (tasks.isEmpty()) {
             isComplete = true;
-            System.out.println("Job " + jobID + " completed.");
+            System.out.println("Job " + jobID +")"+ " completed.");
         }
     }
 

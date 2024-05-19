@@ -10,6 +10,7 @@ public class Station extends AbstractStation {
         super(stationID, maxCapacity, multiflag, fifoflag);
         this.taskSpeeds = taskSpeeds;
         this.stationSpeed = stationSpeed;
+        this.taskSpeeds = taskSpeeds;
     }
 
     public double getSpeed() {

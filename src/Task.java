@@ -55,11 +55,11 @@ public class Task {
         completeTask(station);
     }
 
-    private void performTaskExecution() {
+    public void performTaskExecution() {
         System.out.println("Executing task: " + getTaskType() + " with size " + getDefaultSize());
     }
 
-    private void completeTask(Station station) {
+    public void completeTask(Station station) {
         isCompleted = true;
         System.out.println("Task " + getTaskType() + " has completed at Station " + station.getStationID());
         station.taskCompleted(this, station);
