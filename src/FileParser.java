@@ -29,7 +29,7 @@ public class FileParser {
             parts = line.split("\\s");
             if(parts.length >= 4){
                 jobID = parts[0];
-                jobType = new JobType(parts[1]);
+                jobType = new JobType(parts[1],tasks);
                 startTime = Integer.parseInt(parts[2]);
                 duration = Integer.parseInt(parts[3]);
 
@@ -57,12 +57,9 @@ public class FileParser {
                 if (line.startsWith("(TASKTYPES")) {
                     parseTaskTypes(line, taskTypes);
                 } else if (line.startsWith("(J") && line.endsWith(")")) {
-                    parseJobTypes(line, jobTypes, tasks);
-
-
+                    parseJobTypes(line, jobTypes, tasks,taskTypes);
                 } else if (line.startsWith("(S") && line.endsWith(")")) {
                     parseStations(line, stationTypes,taskSpeeds);
-
                 }
 
             } catch (Exception e) {
@@ -109,33 +106,43 @@ public class FileParser {
 
     }
 
-    public void parseJobTypes(String line, Map<String, JobType> jobTypes, List<Task> tasks) {
-        if(line.endsWith(") )")){
-            line = line.substring(0,line.length() - 2);
+    public void parseJobTypes(String line, Map<String, JobType> jobTypes, List<Task> tasks, Map<String, Task> taskTypes) {
+        if (line.endsWith(") )")) {
+            line = line.substring(1, line.length() - 3);
+        } else {
+            line = line.substring(1, line.length() - 1);
         }
-        line.substring(0,line.length() - 1);
-        String[] parts = line.split("\\s");
+        System.out.println(line);
+        String[] parts = line.split("\\s+");
+        for (String s : parts) {
+            System.out.println(s);
+        }
         String jobTypeId = parts[0].substring(1);
+        tasks.clear();
+
         for (int i = 1; i < parts.length; i++) {
-            if (parts[i].contains("T")) {
-                if (i == parts.length - 1) {
-                    jobTypeId = parts[0];
-                    Task task = new Task(parts[i], 1);
-                    tasks.add(task);
-                    jobTypes.put(jobTypeId, new JobType(jobTypeId));
-                    break;
-                } else if (!parts[i + 1].startsWith("T")) {
-                    Task task = new Task(parts[i], Double.parseDouble(parts[i + 1]));
-                    tasks.add(task);
-                } else if (parts[i + 1].startsWith("T")) {
-                    Task task = new Task(parts[i], 1);
-                    tasks.add((task));
-                }
-                jobTypes.put(jobTypeId, new JobType(jobTypeId));
+            double size = 1;
 
-
+            if (i == parts.length - 1 && !parts[i].contains("T")) {
+                break;
             }
+
+            if (!parts[i].contains("T")) {
+                continue;
+            }
+            String taskTypeID = parts[i];
+            if (i < parts.length - 1 && !parts[i + 1].contains("T")) {
+                size = Double.parseDouble(parts[i + 1]);
+                i++; // Skip the next part as it is the size for this task
+            } else {
+                size = taskTypes.get(parts[i]).getDefaultSize();
+            }
+
+            Task task = new Task(taskTypeID, size);
+            tasks.add(task);
         }
+
+        jobTypes.put(jobTypeId, new JobType(jobTypeId, new ArrayList<>(tasks)));
     }
 
     public void parseStations(String line, Map<String, Station> stationTypes,Map<String,Double> taskSpeeds) {
