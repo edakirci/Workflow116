@@ -6,14 +6,84 @@ import static java.lang.String.*;
 
 
 public class FileParser {
-    List<String> lines = Files.readAllLines(Paths.get("src/input.txt"));
-    List<String> jobfilelines = Files.readAllLines((Paths.get("src/Job.txt")));
+    private List<String> lines;
+    private List<String> jobfilelines;
     Map<String, Task> taskTypes = new HashMap<>();
     Map<String, JobType> jobTypes = new HashMap<>();
     Map<String, Station> stationTypes = new HashMap<>();
     Map<String,Job> jobListText = new HashMap<>();
     List<Task> tasks = new ArrayList<>();
     Map<String,Double> taskSpeeds = new HashMap<>();
+
+    public FileParser(String workflowFilePath, String jobFilePath) throws IOException {
+        this.lines = Files.readAllLines(Paths.get(workflowFilePath));
+        this.jobfilelines = Files.readAllLines(Paths.get(jobFilePath));
+    }
+
+    public List<String> getLines() {
+        return lines;
+    }
+
+    public void setLines(List<String> lines) {
+        this.lines = lines;
+    }
+
+    public List<String> getJobfilelines() {
+        return jobfilelines;
+    }
+
+    public void setJobfilelines(List<String> jobfilelines) {
+        this.jobfilelines = jobfilelines;
+    }
+
+    public Map<String, Task> getTaskTypes() {
+        return taskTypes;
+    }
+
+    public void setTaskTypes(Map<String, Task> taskTypes) {
+        this.taskTypes = taskTypes;
+    }
+
+    public Map<String, JobType> getJobTypes() {
+        return jobTypes;
+    }
+
+    public Map<String, Station> getStationTypes() {
+        return stationTypes;
+    }
+
+    public void setStationTypes(Map<String, Station> stationTypes) {
+        this.stationTypes = stationTypes;
+    }
+
+    public Map<String, Job> getJobListText() {
+        return jobListText;
+    }
+
+    public void setJobListText(Map<String, Job> jobListText) {
+        this.jobListText = jobListText;
+    }
+
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
+    }
+
+    public Map<String, Double> getTaskSpeeds() {
+        return taskSpeeds;
+    }
+
+    public void setTaskSpeeds(Map<String, Double> taskSpeeds) {
+        this.taskSpeeds = taskSpeeds;
+    }
+
+    public void setJobTypes(Map<String, JobType> jobTypes) {
+        this.jobTypes = jobTypes;
+    }
+
     public FileParser() throws IOException {
     }
     public void parseJobFile(){

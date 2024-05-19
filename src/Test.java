@@ -15,15 +15,15 @@ public class Test {
             jobParser.parseJobFile();
             System.out.println("Parsing completed successfully for job data.");
             for (Map.Entry<String, JobType> entry : jobParser.getJobTypes().entrySet()) {
-                System.out.println("Job ID: " + jobParser.jobListText.get());
-            }
+                System.out.println("Job ID: " + entry.getKey() + " has type: " + jobParser.getJobListText());
 
+            }
         } catch (IOException e) {
             System.err.println("Error reading files: " + e.getMessage());
         }
     }
 
-    public static void workflowSimulator() {
+        public static void workflowSimulator () {
 
+        }
     }
-}
