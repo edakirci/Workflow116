@@ -95,7 +95,7 @@ public class FileParser {
         String[] parts = {};
         for (int i = 0; i < jobfilelines.size(); i++) {
             line = jobfilelines.get(i).trim();
-            System.out.println(line);
+
             parts = line.split("\\s");
             if(parts.length >= 4){
                 jobID = parts[0];
@@ -110,7 +110,6 @@ public class FileParser {
                 System.out.println("Invalid line format: " + line);
             }
         }
-        System.out.println(jobListText.get("Job3").getDuration());
 
 
     }
@@ -143,9 +142,6 @@ public class FileParser {
     public void parseTaskTypes(String line, Map<String, Task> taskTypes){
         double size = 1.0;
         String[] parts = line.split("\\s");
-        for(String s : parts){
-            System.out.println(s);
-        }
         for (int j = 1; j < parts.length; j++) {
 
             if (j == parts.length - 1 && parts[j].contains("T")) {
@@ -182,11 +178,7 @@ public class FileParser {
         } else {
             line = line.substring(1, line.length() - 1);
         }
-        System.out.println(line);
         String[] parts = line.split("\\s+");
-        for (String s : parts) {
-            System.out.println(s);
-        }
         String jobTypeId = parts[0].substring(1);
         tasks.clear();
 
@@ -221,7 +213,6 @@ public class FileParser {
         }
         line.substring(0,line.length() - 1);
         String[] parts = line.split("\\s");
-        System.out.println(parts.length);
         String stationID = parts[0].substring(1);
         int capacity = Integer.parseInt(parts[1]);
         boolean multiflag = parts[2].equals("Y");
